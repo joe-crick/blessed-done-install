@@ -1,0 +1,28 @@
+{
+  "name": "blessed_install",
+  "version": "1.0.0",
+  "description": "A blessed install util",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf build && mkdir build",
+    "build-dir": "babel -d ./build ./src -s",
+    "build-main": "babel done-installer.js -o ./build/done_installer.prod.js -s",
+    "build": "run-s build-dir build-main",
+    "start-app": "node ./build/done_installer.prod.js",
+    "start": "run-s clean build start-app",
+    "debug-main": "node-debug ./build/done_installer.prod.js",
+    "debug": "run-s clean build debug-main"
+  },
+  "author": "Joe Crick",
+  "license": "MIT",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "blessed-contrib": "^3.5.5",
+    "mobx": "^2.2.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "npm-run-all": "^2.1.1",
+    "tape": "^4.5.1"
+  }
+}
