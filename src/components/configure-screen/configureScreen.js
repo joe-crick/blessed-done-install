@@ -1,6 +1,6 @@
 module.exports = function(blessed, app) {
 
-    const TITLE_PROG = "project name:";
+    const INPUT_LABEL = "project name:";
 
     const ConfigScreen = blessed.form({
         width: 60,
@@ -10,13 +10,19 @@ module.exports = function(blessed, app) {
     blessed.text({
         parent: ConfigScreen,
         fg: 'cyan',
-        content: TITLE_PROG
+        content: INPUT_LABEL
     })
     const projectName = blessed.textbox({
         parent: ConfigScreen,
         name: 'program',
         inputOnFocus: true,
-        left: TITLE_PROG.length + 1
+        left: INPUT_LABEL.length + 1,
+        cursor: {
+            artificial: true,
+            shape: 'line',
+            blink: true,
+            color: 'blue'
+        }
     })
 
     const submitButton = blessed.button({

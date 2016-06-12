@@ -3,19 +3,16 @@ const splashScreenBuilder = require('../components/splash-screen/splashScreen');
 const configureScreenBuilder = require('../components/configure-screen/configureScreen');
 const loadingScreenBuilder = require('../components/loading-screen/loadingScreen');
 
-var clearScreen = require('../utils/clearScreen');
-
 module.exports = function (config) {
     const app = config.app;
     const AppState = config.AppState;
     const blessed = config.blessed;
-    const screen = app.screen;
     let currentPage;
 
     const disposeRoutes = autorun(function onPageSet() {
 
         if (currentPage) {
-            clearScreen(currentPage, screen);
+            app.clear(currentPage);
             app.removeAllListeners('pageSet');
         }
 
@@ -23,7 +20,7 @@ module.exports = function (config) {
             let page = builder(blessed, app);
             page.focus();
             currentPage = page;
-            screen.append(page);
+            app.render(page);
         }
 
         switch (AppState.page) {
@@ -43,7 +40,6 @@ module.exports = function (config) {
                 break;
         }
 
-        screen.render();
         app.emit('pageSet');
     });
 
