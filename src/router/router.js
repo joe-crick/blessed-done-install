@@ -9,6 +9,13 @@ module.exports = function(config) {
     const blessed = config.blessed;
     let currentPage;
 
+
+    /**
+     * onPageSet - An observer of AppState.page, this function runs when the application's
+     * page changes
+     *
+     * @return {autorun}  Returns an object that allows you to unsubscribe the onPageSet observer     
+     */
     const disposeRoutes = autorun(function onPageSet() {
 
         if (currentPage) {

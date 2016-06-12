@@ -16,6 +16,10 @@ module.exports = function(blessed, app) {
         }]
     });
 
+
+    /**
+     * loadingScreenOnPageLoad - Runs after the loading screen has loaded     
+     */
     app.on('pageSet', function loadingScreenOnPageLoad() {
         var updateDonut = function() {
             percent = percent * 2;
