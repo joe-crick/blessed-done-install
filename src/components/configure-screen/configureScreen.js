@@ -2,18 +2,42 @@ module.exports = function(blessed, app) {
 
     const INPUT_LABEL = "project name:";
 
-    const ConfigScreen = blessed.form({
-        width: 60,
+    var ConfigScreen = blessed.box({
+        top: 'center',
+        left: 'center',
+        width: '70%',
+        height: '50%',
+        content: 'Project Configuration',
+        tags: true,
+        border: {
+            type: 'line'
+        },
+        style: {
+            fg: 'white',
+            bg: 'white',
+            border: {
+                fg: '#f0f0f0'
+            }
+        }
+    });
+
+    const form = blessed.form({
+        parent: ConfigScreen,
+        width: '95%',
         height: 4,
-        keys: true
+        top: 3,
+        keys: true,
+        border: {
+            type: 'line'
+        }
     });
     blessed.text({
-        parent: ConfigScreen,
+        parent: form,
         fg: 'cyan',
         content: INPUT_LABEL
     })
     const projectName = blessed.textbox({
-        parent: ConfigScreen,
+        parent: form,
         name: 'program',
         inputOnFocus: true,
         left: INPUT_LABEL.length + 1,
@@ -26,7 +50,7 @@ module.exports = function(blessed, app) {
     })
 
     const submitButton = blessed.button({
-        parent: ConfigScreen,
+        parent: form,
         content: 'Submit',
         height: 1,
         width: 7,

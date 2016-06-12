@@ -56,7 +56,7 @@ const App = function (AppState) {
 
     /**
      * render - Renders a page
-     *
+     
      * @param  {blessed.Node} page A root node that comprises a page
      */
     application.render = function render(page) {
