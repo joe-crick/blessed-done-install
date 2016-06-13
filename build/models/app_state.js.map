@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/models/app_state.js"],"names":[],"mappings":"AAAA,MAAM,EAAC,UAAD,KAAe,QAAQ,MAAR,CAArB;;AAEA,MAAM,WAAW,WAAW;AACxB,UAAM;AADkB,CAAX,CAAjB;;AAIA,OAAO,OAAP,GAAiB,QAAjB","file":"app_state.js","sourcesContent":["const {observable} = require('mobx');\n\nconst AppState = observable({\n    page: ''\n});\n\nmodule.exports = AppState;\n"]}
